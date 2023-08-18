@@ -31,3 +31,10 @@ function yes(x) {
 }
 
 yes(x > 0);
+
+// Import statements in Source
+import { red, rcross, sail, corner, nova, heart, show, 
+         quarter_turn_right, stack, stackn, repeat_pattern} from "rune";
+
+const sideways_heart = quarter_turn_right(heart); // Function Abstraction
+show(stack(sideways_heart, sail)); 
