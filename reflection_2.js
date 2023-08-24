@@ -106,7 +106,7 @@ function fibonacci(n) {
            : fibonacci(n - 1) + fibonacci(n - 2);
 }
 
-// Interative Function
+// Iterative Function
 // Useful to know what the function needs to know before calculating
 // For fib, it needs to only keep the value n - 1 and n - 2 to calculate n.
 function fibonacci_iter(n) {
@@ -121,4 +121,15 @@ function f_iter(first, second, counter) {
 
 fibonacci_iter(5);
 
+// Simplified Iterative Function
+function f(x, y) {
+    return x === 0 ? y : f(x - 1, y + 1);
+}
 
+// Simplified Recursive Function 
+function g(x) {
+    return x === 0 ? 0 : 1 + g(x - 1);
+}
+
+// If the recursive call is the last thing done, it is an iterative process 
+// as there is no deferred processes
