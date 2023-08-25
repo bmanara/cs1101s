@@ -76,7 +76,7 @@ function factorial(n) {
 factorial(6);
 
 // Iteration
-// Iterative Functions does not have differed operations (good for resources management)
+// Iterative Functions does not have deferred operations (good for resources management)
 
 function repeat_pattern(n, pattern, init) {
     return n === 0 ? init : repeat_pattern(n - 1, pattern, pattern(init));
@@ -133,3 +133,28 @@ function g(x) {
 
 // If the recursive call is the last thing done, it is an iterative process 
 // as there is no deferred processes
+
+/*
+Orders of Growth
+Time and Space, how long does the program run, how much memory do we need?
+Only interested in a rough measure of resources used by a computational process,
+with respect to the problem size
+
+"Order of Growth" is an abstraction technique, therefore details such as actual
+runtime, programming language, or styles are deemed irrelevant
+
+For factorial(n),
+Number of operations grows linearly proportional to n
+Therefore the function runs in a time (linearly) proportional to the argument n. Θ(n)
+Number of deferred operations grows linearly proportional to n
+Therefore the function has a space requirement (linearly) proportional to the argument n
+
+For fibonacci(n),
+Time for exploring the tree grows with the size of tree
+Therefore, the function runs in a time exponentially proportional to the argument n. Θ(Φ^n)
+Number of deferred operations however still grows linearly proportional to n 
+Therefore the function has a space requirement (linearly) proportional to the argument n
+*/
+
+
+
