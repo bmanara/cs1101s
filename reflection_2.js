@@ -156,5 +156,10 @@ Number of deferred operations however still grows linearly proportional to n
 Therefore the function has a space requirement (linearly) proportional to the argument n
 */
 
+/*
+O(n^2 + n + 1) = O(n^2)
+O(2n + e) = O(n)
+O(2^(2n)) = O(2^(2n)) // We cannot just equal it to O(2^n)
+
 
 
