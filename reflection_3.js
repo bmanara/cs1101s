@@ -136,3 +136,14 @@ function rpn(n: number,
                         ? x
                         : rpn(n - 1, pattern, pattern(x));
 }
+
+// If Else Statements
+if (x > 0) {
+    return "x is positive";
+}   else if (x < 0) {
+    return "x is negative";
+} else {
+    return "x is zero";
+}
+
+
