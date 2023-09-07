@@ -171,4 +171,5 @@ display_list(
          
 // Box and Pointer Diagrams are graphical representations of data structures made of pairs
 draw_data(pair(1, pair(2, pair(3, null))));
+draw_data(pair(0, list(1, 2)));
 
