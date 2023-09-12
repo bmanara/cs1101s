@@ -1,6 +1,47 @@
 // Mastery Check 1
 // Scope, Higher Order Function, Substitution Model and Recursive/Iterative Process
 
+// Substitution Model
+
+// Example of Applicative Order
+// Evaluates the arguments first, before substituting the
+// resulting argument into its parameters.
+
+function square(x) {
+    return x * x;
+}
+
+square(1 + 1) + square(5 * 2);
+
+/*
+When calling the above function...
+square(1 + 1) + square(5 * 2);
+square(2) + square(5 * 2);
+2 * 2 + square(5 * 2);
+4 + square(5 * 2);
+4 + square(10);
+4 + 10 * 10;
+4 + 100;
+104;
+Once the argument is evaluated, the function call goes through.
+*/
+
+// Example of Normal Order
+// Does not evaluate the arguments first, instead it substitutes argument 
+// expressions for parameters until it obtains an expression involving only 
+// operators and primitive expressions.
+
+square(1 + 1) + square(5 * 2);
+/*
+When calling the above function...
+square(1 + 1) + square(5 * 2);
+((1 + 1) * (1 + 1)) + square(5 * 2);
+((1 + 1) * (1 + 1)) + ((5 * 2) * (5 * 2));
+(2 * 2) + (10 * 10);
+4 + 100;
+104
+*/
+
 // Recursive vs Iterative Process
 // Example of Recursion Process
 function factorial(n) {
@@ -52,6 +93,10 @@ Using the substitution model, we can visualise the iterative process:
 factorial_iter(5);
 fact_iter(1, 1, 5);
 fact_iter(1 * 1, 1 + 1, 5); => fact_iter(1, 2, 5);
-fact_iter(1* 2)
+fact_iter(1 * 2, 2 + 1, 5); => fact_iter(2, 3, 5);
+fact_iter(2 * 3, 3 + 1, 5); => fact_iter(6, 4, 5);
+fact_iter(6 * 4, 4 + 1, 5); => fact_iter(24, 5, 5);
+fact_iter(24 * 5, 5 + 1, 5) => fact_iter(120, 6, 5);
+120;
 */
 
