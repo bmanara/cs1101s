@@ -1,6 +1,36 @@
 // Mastery Check 1
 // Scope, Higher Order Function, Substitution Model and Recursive/Iterative Process
 
+// Scope
+// Example of Scope of Names
+const x = 3;
+const y = 1; 
+
+function f(g) {
+    const y = 10;
+    return g(y);
+}
+
+f(x => x + y);
+
+// Name declaration vs Name occurrence
+// Forms of declaration includes 
+// Pre declared names
+math_PI;
+
+// Constant Declaration
+const constant = "hello";
+
+// Parameters of function declarations and lambda functions
+const lambda = (x, y) => x + y;
+
+// Function name of function declarations
+function f_name(x) {
+    return x;
+}
+
+// Name occurrence refers to its closest surrounding declaration. 
+
 // Substitution Model
 
 // Example of Applicative Order
@@ -11,7 +41,7 @@ function square(x) {
     return x * x;
 }
 
-square(1 + 1) + square(5 * 2);
+// square(1 + 1) + square(5 * 2);
 
 /*
 When calling the above function...
@@ -31,7 +61,7 @@ Once the argument is evaluated, the function call goes through.
 // expressions for parameters until it obtains an expression involving only 
 // operators and primitive expressions.
 
-square(1 + 1) + square(5 * 2);
+// square(1 + 1) + square(5 * 2);
 /*
 When calling the above function...
 square(1 + 1) + square(5 * 2);
@@ -50,7 +80,7 @@ function factorial(n) {
            : n * factorial(n - 1);
 }
 
-factorial(5);
+// factorial(5);
 
 /*
 The above function gives rise to a recursive process because it has deferred
@@ -83,7 +113,7 @@ function factorial_iter(n) {
     return fact_iter(1, 1, n);
 }
 
-factorial_iter(5);
+// factorial_iter(5);
 
 /*
 The above function gives rise to a recursive process because it does not have 
