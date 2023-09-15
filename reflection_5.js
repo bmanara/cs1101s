@@ -179,12 +179,39 @@ function scale_tree(tree, k) {
 
 
 
+/*
+// Brief 5
+T-Diagrams, diagrams to show how our processor is running our program
+"Program" Overwatch (x86-64 code) >> x86-64 Processor
+"Program" Instagram (A17 build) >> A17 Pro 
+
+
+// Intepreters
+We are not going to write different programs for different processors, so what do we do?
+Our interpreters is a program that executes another program. 
+
+The intepreter's
+source language is the language in which the interpreter is written,
+target language is the language in which the programs are written which the 
+interpreter can execute
+
+We represent this as a square with "JavaScript / x86-64" in T-diagram, 
+seen as an intepreter for JavaScript, written in x86-64 machine code.
+
+Can be used for hardware emulation, and intepreters can work together.
+
+
+// Compilers
+Instead of always running the conde and interpreting it, we can compile our
+code to another language. 
+A compiler is a program that tranlates from one language to another.
+
+Represented with a t-shape block "TypeScript --> JavaScript / x86-64"
+TypeScript to JavaScript compiler written in x86-64 machine code
 
 
 
-
-
-
+*/
 
 
 
