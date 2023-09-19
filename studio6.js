@@ -64,7 +64,6 @@ function subsets(xs) {
 
 display_list(subsets(list(1, 2, 3)));
 
-
 // Question 3
 
 
