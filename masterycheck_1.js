@@ -31,6 +31,37 @@ function f_name(x) {
 
 // Name occurrence refers to its closest surrounding declaration. 
 
+
+
+// Higher Order Function
+Function that takes in a function / returns a function 
+Functions that manipulate functions
+
+// Example of Higher Order Function
+function f(g , x) {
+	return g(x) ;
+}
+
+function g(y) {
+	return y + 1 ;
+}
+
+f(g , 7); 
+
+// Lambda expression 
+Parameter => expression
+const = (g, x) => g(x);
+const = (y) => y+1;
+
+// Abstraction
+
+function transform_mosaic(p1, p2 , p3 , p4 , transform) {
+	return transform(mosaic ( p1 , p2 , p3 , p4));
+}
+
+
+
+
 // Substitution Model
 
 // Example of Applicative Order
@@ -71,6 +102,9 @@ square(1 + 1) + square(5 * 2);
 4 + 100;
 104
 */
+
+
+
 
 // Recursive vs Iterative Process
 // Example of Recursion Process
