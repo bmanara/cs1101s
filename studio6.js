@@ -62,7 +62,6 @@ function subsets(xs) {
     }
 }
 
-display_list(subsets(list(1, 2, 3)));
 
 // Question 3
 
@@ -102,7 +101,15 @@ insertion_sort_cmp(xs, (x, y) => false);
 // Result: list(7, 2, 4, 6, 9, 1, 5, 8, 3, 6)
 
 // (d) Order ascending first, then shift all even to the front, while odd goes back
-insertion_sort_cmp(xs, );
+insertion_sort_cmp(xs, (x, y) => x % 2 === 0 && y % 2 === 0
+                                 ? x <= y
+                                 : x % 2 === 0 && y % 2 !== 0
+                                 ? true
+                                 : x % 2 !== 0 && y % 2 === 0
+                                 ? false
+                                 : x % 2 !== 0 && y % 2 !== 0
+                                 ? x > y
+                                 : false);
 // Result: list(2, 4, 6, 6, 8, 9, 7, 5, 3, 1)
 
 
@@ -157,7 +164,7 @@ function merge_sort(xs) {
 }
 
 // Test
-merge_sort(list(7, 6, 3, 8, 4, 6, 5, 9, 8, 3, 1, 5, 2));
+// merge_sort(list(7, 6, 3, 8, 4, 6, 5, 9, 8, 3, 1, 5, 2));
 
 // (a) Runtime: O(n)
 // (b) Runtime: O(3n) = O(n)
