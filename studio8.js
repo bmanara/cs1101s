@@ -33,8 +33,8 @@
 //     x;
 // }
 
-
-// Question 1 (Reflection 8)
+// Reflection 8
+// Question 1
 
 function make_withdraw(balance, password) {
     let counter = 0;
@@ -65,3 +65,18 @@ acc(15, "canola"); // returns "Wrong password; no withdraw"
 acc(25, "olive"); // returns "Wrong password; no withdraw"
 acc(30, "my_password"); // returns "Account disabled"
 acc(30, "his_passcode"); // returns "Account disabled"
+
+// Question 2 
+let commission = 25; // my commission in dollars
+// return a calculator for total price
+// total price = (commission + cost) * (1 + tax_rate)
+function make_price_calculator(tax_rate) {
+    function calculator(cost) {
+        return (commission + cost) * (1 + tax_rate);
+    }
+    return calculator;
+}
+
+const calc = make_price_calculator(0.07);
+commission = 125;
+calc(75);
