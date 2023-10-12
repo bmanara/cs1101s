@@ -44,12 +44,13 @@ function make_withdraw(balance, password) {
         } else if (password !== input) {
             counter = counter + 1;
             return "Wrong password; no withdraw";
-        } else if (balance >= amount) {
-            counter = 0;
+        } 
+        
+        counter = 0;
+        if (balance >= amount) {
             balance = balance - amount;
             return balance;
         } else {
-            counter = 0;
             return "Insufficient funds";
         }
     }
@@ -80,3 +81,23 @@ function make_price_calculator(tax_rate) {
 const calc = make_price_calculator(0.07);
 commission = 125;
 calc(75);
+
+// Question 3
+function curry(f) {
+    return x => y => f(x, y);
+}
+(curry(math_pow))(3)(4);
+
+// Example given in Reflection 
+function abs(x) {
+    if (x >= 0) {
+        return x;
+    } else {
+        return -x;
+    }
+}
+
+abs(5) + 3; 
+
+// Running in CDE will show us how the CDE cuts off the function and returns 
+// what we want, instead of running the remainder of it after returning x
