@@ -147,11 +147,23 @@ function make_optimized_search(A) {
 
 // Question 2a
 function fib(n) {
-    
+    const mem = [];
+    function helper(n) {
+        if (mem[n] !== undefined) {
+            return mem[n];
+        } else {
+            const result =  n <= 1 ? 1 : helper(n - 1) + helper(n - 2);
+            mem[n] = result;
+            return result;
+        }       
+    }
+    return helper(n);
 }
 
+fib(29);
 
-
+// Note that the helper function is paramount to this working, else the runtime
+// is still going to be exponential.
 
 
 
