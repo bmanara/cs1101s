@@ -93,7 +93,18 @@ L; // returns [2, [4, [6, [8, null]]]]
 function make_optimized_search(A) {
     const len = array_length(A);
     
-    function insertion_sort(A) {
+    function copy(A) {
+        const B = [];
+        const len = array_length(A);
+        for (let i = 0; i < len; i = i + 1) {
+            B[i] = A[i];
+        }
+        
+        return B;
+    }
+    
+    /*
+    function selection_sort(A) {
         
         function find_min_pos(arr, start, end) {
             let value = arr[start];
@@ -119,6 +130,15 @@ function make_optimized_search(A) {
             swap(A, i, position);
         }
     }
+    */
+    
+    // function merge_sort(A) {
+    //     const len = array_length(A);
+    //       function helper(A, start, end) {
+    //         //   ???
+    //       }
+    //     return helper(A, 0, len - 1);
+    // }
     
     function binary_search(A, x, start, end) {
         if (start > end) {
@@ -132,9 +152,11 @@ function make_optimized_search(A) {
         return result;
     }
     
-    const sorted_array = insertion_sort(A);
+    const B = copy(A);
+    // merge_sort(B);
+    // selection_sort(B); // should be using merge_sort(A);
     
-    return x => binary_search(A, x, 0, len - 1);
+    return x => binary_search(B, x, 0, len - 1);
 }
 
 // const my_array = [3,41,20,1,5,16,4,0,14,6,17,8,4,0,2];
@@ -147,7 +169,8 @@ function make_optimized_search(A) {
 
 // Question 2a
 function fib(n) {
-    const mem = [];
+    const mem = [0, 1];
+    /*
     function helper(n) {
         if (mem[n] !== undefined) {
             return mem[n];
@@ -158,6 +181,12 @@ function fib(n) {
         }       
     }
     return helper(n);
+    */
+    for (let i = 2; i <= n; i = i + 1) {
+        mem[i] = mem[i - 1] + mem[i - 2];
+    }
+    
+    return mem[n - 1]; // dont need n - 1 based on exercise but fuck you too
 }
 
 fib(29);
@@ -166,7 +195,23 @@ fib(29);
 // is still going to be exponential.
 
 
+// Question 2b
+function fib2(n) {
+    n = n - 1; // not needed but im gonna leave it in cause fuck you
+    if (n < 1) {
+        return n;
+    }
+    
+    let x = 0;
+    let y = 1;
+    for (let i = 2; i <= n; i = i + 1) {
+        y = x + y;
+        x = y - x;
+    }
+    return y;
+}
 
+fib2(29);
 
 
 
