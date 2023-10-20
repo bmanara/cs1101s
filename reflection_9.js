@@ -417,7 +417,12 @@ function stream_filter(p, s) {
            : stream_filter(p, stream_tail(s));
 }
 
-
+// From streams to lists
+function eval_stream(s, n) {
+    return n === 0
+           ? null 
+           : pair(head(s), eval_stream(stream_tail(s), n + 1))
+}
 
 
 
