@@ -421,22 +421,8 @@ function stream_filter(p, s) {
 function eval_stream(s, n) {
     return n === 0
            ? null 
-           : pair(head(s), eval_stream(stream_tail(s), n + 1))
+           : pair(head(s), eval_stream(stream_tail(s), n + 1));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
