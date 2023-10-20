@@ -304,8 +304,128 @@ function mchoose(n, k) {
 }
 
 // Order of Growth?
-// Runtime:
-// Space: 
+// Runtime: Theta(k^2 - n)
+// Space: Theta(nk)
+
+
+// Brief 9 (Streams I)
+/*
+New data structure: Streams, "lazy" data structures
+Produce elements only on demand/
+Can we implement conditionals using functions?
+E1 ? E2 : E3 as... cond(E1, E2, E3)
+*/
+
+function cond(x, y, z) {
+    if (x) { return y; } else { return z; }
+}
+
+// In our original conditional, both E2 and E3 might or might not be evaluated.
+// But in our function implementation, both E2 and E3 are evaluated regardless.
+// For it to be "lazy", cond_lazy(E1, () => E2, () => E3)
+
+function cond_lazy(x, y, z) {
+    if (x) { return y(); } else { return z(); }
+}
+
+// Evalutes an expression when necessary, on-demand
+/*
+We delay the evaluation of E2 and E3 until enough info is gained to decide 
+which one was needed
+Functions allow us to describe an activity without actually doing it
+*/
+
+/*
+// Delayed Lists
+Our pairs contain a data item as head, but a function as tail that can be 
+activated when needed.
+A stream is either the empty list, or a pair whose tail is a nullary function
+that returns a stream
+*/
+
+const s1 = null;  // An empty stream
+
+const s2 = pair(1, () => null);  // a stream with element 1
+
+const s3 = pair(1, 
+                () => pair(2, 
+                           () => pair(3, 
+                                      () => null))); 
+                                      
+// a stream with elements 1, 2, 3. Note that the stream is still only a pair.
+// s1, s2 and s3 are finite streams
+// Below, is an example of an infinite stream, filled with ones
+
+function ones_stream() {
+    return pair(1, ones_stream);
+}
+
+const ones = ones_stream();
+head(ones); // 1
+head(tail(ones)()); // 1
+head(tail(tail(ones)())()); // 1
+
+ones;
+// Note that ones has not changed, it is still a pair with 1 as head, function as tail
+
+function stream_tail(stream) {
+    return tail(stream)();
+}
+
+head(stream_tail(ones)); // 1, makes it more readable
+
+// Streams are lazy lists
+function enum_stream(low, hi) {
+    return low > hi
+           ? null 
+           : pair(low, () => enum_stream(low + 1, hi));
+}
+
+// O(1) runtime, only returns a pair. Will only "create" the tail if needed.
+
+const s = enum_stream(1, 100);
+head(s); // 1
+head(stream_tail(stream_tail(s))); // 3
+
+// A function to help us find an element based on given index.
+function stream_ref(s, n) {
+    return n === 0
+           ? head(s)
+           : stream_ref(stream_tail(s), n - 1);
+}
+
+stream_ref(s, 8);
+
+// O(n) runtime
+
+// map function for stream
+function stream_map(f, s) {
+    return is_null(s)
+           ? null 
+           : pair(f(head), () => stream_map(f, stream_tail(s)));
+}
+
+
+// The tail turns into a function that will run map as well.
+
+// filter function for stream
+function stream_filter(p, s) {
+    return is_null(s)
+           ? null 
+           : p(head(s))
+           ? pair(head(s), () => stream_filter(p, stream_tail(s)))
+           : stream_filter(p, stream_tail(s));
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
