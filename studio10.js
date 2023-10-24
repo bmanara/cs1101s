@@ -1,4 +1,4 @@
-// Question 2(b)
+// // Question 2(b)
 function bubblesort_list(L) {
     // Your solution here.
     const len = length(L);
@@ -55,22 +55,58 @@ LL; // should show [1, [2, [3, [4, [5, null]]]]]
 
 // // The memoized version.
 // // n is the amount in cents, and k is the number of denominations.
-// function mcc(n, k) {
-//     if (n === 0) {
-//         return 1;
-//     } else if (n < 0 || k === 0) {
-//         return 0;
-//     } else if (read(n, k) !== undefined) {
-//         return read(n, k);
-//     } else {
-//         const combiA = mcc(n, k - 1);
-//         const combiB = mcc(n - first_denomination(k), k);
-//         const total = combiA + combiB;
-//         write(n, k, total);
-//         return total;
-//     }
+function mcc(n, k) {
+    if (n === 0) {
+        return 1;
+    } else if (n < 0 || k === 0) {
+        return 0;
+    } else if (read(n, k) !== undefined) {
+        return read(n, k);
+    } else {
+        const combiA = mcc(n, k - 1);
+        const combiB = mcc(n - first_denomination(k), k);
+        const total = combiA + combiB;
+        write(n, k, total);
+        return total;
+    }
     
-// }
+}
 
 // mcc(365, 5);  // Expected result: 1730
+
+
+// In-class Studio
+
+
+function rotate_matrix(M) {
+    // Try by reversing the rows and then flipping it through the xy-line
+}
+
+let matrix_2d = [[1, 2, 3, 4],
+                 [5, 6, 7, 8], 
+                 [9, 10, 11, 12],
+                 [13, 14, 15, 16]];
+                 
+rotate_matrix(matrix_2d);
+// matrix_2d;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
