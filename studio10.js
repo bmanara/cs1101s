@@ -146,18 +146,26 @@ function stream_of_integers(n) {
 }
 const integers = stream_of_integers(1);
 
-// const zipped = zip_list_of_streams(list(ones, twos, integers));
-// eval_stream(zipped, 9);
+const zipped = zip_list_of_streams(list(ones, twos, integers));
+eval_stream(zipped, 14);
+// eval_stream(integers, 6);
+
+function answer(ss) {
+    return pair(head(head(ss)), () => 
+        answer(
+            append(
+                tail(ss), list(stream_tail(head(ss))))));
+}
 
 // Question 3
-const empty_stream = pair(undefined, () => empty_stream);
+const empty_stream = null;
 const s1 = pair(3, () => pair(4, () => pair(5, () => null)));
 function add_streams(s1, s2) {
     return is_null(s1)
-           ? s2
-           : is_null(s2)
-           ? s1
-           : pair(head(s1) + head(s2), () => add_streams(stream_tail(s1), 
+          ? s2
+          : is_null(s2)
+          ? s1
+          : pair(head(s1) + head(s2), () => add_streams(stream_tail(s1), 
                                                          stream_tail(s2)));
 }
 
@@ -165,9 +173,11 @@ function partial_sums(s) {
     return pair(head(s), () => add_streams(partial_sums(s), stream_tail(s)));
 }
 
-// const partial_s = partial_sums(integers);
+const partial_s = partial_sums(integers);
 // eval_stream(partial_s, 3);
-eval_stream(partial_sums(s1), 5);
+// eval_stream(partial_sums(s1), 5);
+// stream_ref(partial_sums(empty_stream), 1);
+
 
 
 
