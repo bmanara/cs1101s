@@ -11,7 +11,6 @@ function bubblesort_list(L) {
         } else {
             if (head(xs) > head(tail(xs))) {
                 const temp = head(xs);
-                display(temp);
                 set_head(xs, head(tail(xs)));
                 set_head(tail(xs), temp);
             }
@@ -29,28 +28,28 @@ LL; // should show [1, [2, [3, [4, [5, null]]]]]
 
 
 // Question 3(b)
-// const mem = [];
+const mem = [];
 
-// function read(n, k) {
-//     return mem[n] === undefined
-//           ? undefined
-//           : mem[n][k];
-// }
+function read(n, k) {
+    return mem[n] === undefined
+          ? undefined
+          : mem[n][k];
+}
 
-// function write(n, k, value) {
-//     if (mem[n] === undefined) {
-//         mem[n] = [];
-//     }
-//     mem[n][k] = value;
-// }
+function write(n, k, value) {
+    if (mem[n] === undefined) {
+        mem[n] = [];
+    }
+    mem[n][k] = value;
+}
 
-// function first_denomination(kinds_of_coins) {
-//     return kinds_of_coins === 1 ?   5 :
-//           kinds_of_coins === 2 ?  10 :
-//           kinds_of_coins === 3 ?  20 :
-//           kinds_of_coins === 4 ?  50 :
-//           kinds_of_coins === 5 ? 100 : 0;
-// }
+function first_denomination(kinds_of_coins) {
+    return kinds_of_coins === 1 ?   5 :
+          kinds_of_coins === 2 ?  10 :
+          kinds_of_coins === 3 ?  20 :
+          kinds_of_coins === 4 ?  50 :
+          kinds_of_coins === 5 ? 100 : 0;
+}
 
 
 // // The memoized version.
@@ -87,11 +86,45 @@ let matrix_2d = [[1, 2, 3, 4],
                  [9, 10, 11, 12],
                  [13, 14, 15, 16]];
                  
-rotate_matrix(matrix_2d);
+// rotate_matrix(matrix_2d);
 // matrix_2d;
 
 
+// Reflection 10
+// Question 1
+const x = stream_map(display, enum_stream(0, 10)); // 0;
+stream_ref(x, 3); // 1; 2; 3;
+stream_ref(x, 5); // 1; 2; 3; 4; 5;
 
+function memo_fun(fun) {
+    let already_run = false;
+    let result = undefined;
+    
+    function mfun() {
+        if (!already_run) {
+            result = fun();
+            already_run = true;
+            return result;
+        } else {
+            return result;
+        }
+    }
+    
+    return mfun;
+}
+
+function stream_map_optimized(f, s) {
+    return is_null(s)
+    ? null
+    : pair(f(head(s)),
+           memo_fun(() => stream_map_optimized(f, stream_tail(s))));
+}
+
+// const y = stream_map_optimized(display, enum_stream(0, 10)); // 0;
+// stream_ref(y, 3); // 1; 2; 3;
+// stream_ref(y, 5); // 4; 5;
+
+// Question 2
 
 
 
