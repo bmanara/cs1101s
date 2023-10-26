@@ -150,6 +150,8 @@ const integers = stream_of_integers(1);
 // eval_stream(zipped, 9);
 
 // Question 3
+const empty_stream = pair(undefined, () => empty_stream);
+const s1 = pair(3, () => pair(4, () => pair(5, () => null)));
 function add_streams(s1, s2) {
     return is_null(s1)
            ? s2
@@ -165,6 +167,7 @@ function partial_sums(s) {
 
 // const partial_s = partial_sums(integers);
 // eval_stream(partial_s, 3);
+eval_stream(partial_sums(s1), 5);
 
 
 
