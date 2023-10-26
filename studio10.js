@@ -92,9 +92,9 @@ let matrix_2d = [[1, 2, 3, 4],
 
 // Reflection 10
 // Question 1
-const x = stream_map(display, enum_stream(0, 10)); // 0;
-stream_ref(x, 3); // 1; 2; 3;
-stream_ref(x, 5); // 1; 2; 3; 4; 5;
+// const x = stream_map(display, enum_stream(0, 10)); // 0;
+// stream_ref(x, 3); // 1; 2; 3;
+// stream_ref(x, 5); // 1; 2; 3; 4; 5;
 
 function memo_fun(fun) {
     let already_run = false;
@@ -125,10 +125,29 @@ function stream_map_optimized(f, s) {
 // stream_ref(y, 5); // 4; 5;
 
 // Question 2
+function zip_list_of_streams(xs) {
+    function helper(L) {
+        if (is_null(L)) {
+            return helper(xs);
+        } else {
+            const element = head(head(L));
+            set_head(L, stream_tail(head(L)));
+            return pair(element, () => helper(tail(L)));
+        }
+    }
+    
+    return helper(xs);
+}
 
+const ones = pair(1, () => ones);
+const twos = pair(2, () => twos);
+function stream_of_integers(n) {
+    return pair(n, () => stream_of_integers(n + 1));
+}
+const integers = stream_of_integers(1);
 
-
-
+const zipped = zip_list_of_streams(list(ones, twos, integers));
+eval_stream(zipped, 9);
 
 
 
