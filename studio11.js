@@ -1,6 +1,7 @@
 function scale_stream(c, stream) {
     return stream_map(x => c * x, stream);
 }
+
 const A = pair(1, () => scale_stream(2, A));
 
 function mul_streams(a,b) {
@@ -38,6 +39,18 @@ function negate(s) {
 const alt_ones = pair(1, () => negate(alt_ones));
 
 stream_tail(stream_tail(alt_ones));
+
+function zero_stream(s) {
+    return pair(head(s) * 0, () => zero_stream(stream_tail(s)));
+}
+
+const zeros = zero_stream(alt_ones);
+
+const zeros1 = scale_stream(0, alt_ones);
+
+stream_tail(stream_tail(zeros));
+
+zeros1;
 
 
 
