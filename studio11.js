@@ -30,7 +30,14 @@ stream_tail(stream_tail(stream_tail(stream_tail(stream_tail(B)))));
 
 
 
+// Question 2
+function negate(s) {
+    return pair(head(s) * -1, () => negate(stream_tail(s)));
+}
 
+const alt_ones = pair(1, () => negate(alt_ones));
+
+stream_tail(stream_tail(alt_ones));
 
 
 
