@@ -1,56 +1,77 @@
-function scale_stream(c, stream) {
-    return stream_map(x => c * x, stream);
-}
+// function scale_stream(c, stream) {
+//     return stream_map(x => c * x, stream);
+// }
 
-const A = pair(1, () => scale_stream(2, A));
+// const A = pair(1, () => scale_stream(2, A));
 
-function mul_streams(a,b) {
-    return pair(head(a) * head(b),
-                () => mul_streams(stream_tail(a), stream_tail(b)));
-}
+// stream_tail(stream_tail(stream_tail(A)));
+// A; 1, 2, 4, 8, 16, 32, 64, ...
 
-const ones = pair(1, () => ones);
+// function mul_streams(a,b) {
+//     return pair(head(a) * head(b),
+//                 () => mul_streams(stream_tail(a), stream_tail(b)));
+// }
 
-function add_streams(s1, s2) {
-    return is_null(s1)
-           ? s2
-           : is_null(s2)
-           ? s1
-           : pair(head(s1) + head(s2), () => add_streams(stream_tail(s1), 
-                                                         stream_tail(s2)));
-}
+// const ones = pair(1, () => ones);
 
-const integers = pair(1, () => add_streams(ones, integers));
+// function add_streams(s1, s2) {
+//     return is_null(s1)
+//           ? s2
+//           : is_null(s2)
+//           ? s1
+//           : pair(head(s1) + head(s2), () => add_streams(stream_tail(s1), 
+//                                                          stream_tail(s2)));
+// }
 
-const B = pair(1, () => mul_streams(B, integers));
+// const integers = pair(1, () => add_streams(ones, integers));
 
-stream_tail(stream_tail(stream_tail(A)));
-// A;
-
-stream_tail(stream_tail(stream_tail(stream_tail(stream_tail(B)))));
-
+// const B = pair(1, () => mul_streams(B, integers));
+// // B; 1, 2, 6, 24, 120, 720,...
 
 
-// Question 2
-function negate(s) {
-    return pair(head(s) * -1, () => negate(stream_tail(s)));
-}
+// stream_tail(stream_tail(stream_tail(stream_tail(stream_tail(B)))));
 
-const alt_ones = pair(1, () => negate(alt_ones));
 
-stream_tail(stream_tail(alt_ones));
 
-function zero_stream(s) {
-    return pair(head(s) * 0, () => zero_stream(stream_tail(s)));
-}
+// // Question 2
+// function negate(s) {
+//     return pair(head(s) * -1, () => negate(stream_tail(s)));
+// }
 
-const zeros = zero_stream(alt_ones);
+// const alt_ones = pair(1, () => negate(alt_ones));
 
-const zeros1 = scale_stream(0, alt_ones);
+// stream_tail(stream_tail(alt_ones1));
 
-stream_tail(stream_tail(zeros));
 
-zeros1;
+// function zero_stream(s) {
+//     return pair(head(s) * 0, () => zero_stream(stream_tail(s)));
+// }
+
+// const zeros = zero_stream(alt_ones);
+
+// const zeros1 = scale_stream(0, alt_ones);
+
+// // stream_tail(stream_tail(zeros));
+
+// // zeros1;
+
+
+// Studio In-Class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
