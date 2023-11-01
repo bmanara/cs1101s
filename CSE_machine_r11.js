@@ -621,7 +621,8 @@ const primitive_functions = list(
        list("is_null", is_null          ),
        list("display", display          ),
        list("error",   error            ),
-       list("math_pow",math_pow         )
+       list("math_pow",math_pow         ),
+       list("parse",   parse            )
        );
 const primitive_function_symbols =
     map(head, primitive_functions);
@@ -718,10 +719,22 @@ function parse_and_evaluate(string) {
 }
 
 // Question 1
-// parse_and_evaluate("3 % 4 % 5;");
+parse_and_evaluate("3 % 4 % 5;");
 
 // Question 2
 parse_and_evaluate("false && 0();");
+
+// Question 3
+display_list(parse_and_evaluate(`parse('parse("1;");');`));
+/*
+// There are 4 semicolons ";". Explain the meaning of them in reverse order.
+First semicolon is for the actual program. It is required to tell Source
+that this is the end of my statement.
+Second semicolon is to tell my outer parse function that it is the end of my function.
+This means that it is telling my CSE machine to evaluate the outer parse.
+Similarly, the third semicolon does the same for the inner parse.
+Lastly, the fourth semicolon is for the evaluation of 1.
+*/
 
 //parse_and_evaluate("1;");
 
