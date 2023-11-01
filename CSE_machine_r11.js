@@ -54,6 +54,23 @@ function evaluate(program) {
                          conditional_consequent(command),
                          conditional_alternative(command)),
                     C));
+        } else if (is_logical_composition(command)){ // Question 2 Start
+            const logical_operator = logical_symbol(command);
+            if (logical_operator === "&&") {
+                C = pair(logical_composition_first_component(command),
+                      pair(make_branch_instruction(
+                             logical_composition_second_component(command),
+                             make_literal(false)), 
+                        C));
+            } else if (logical_operator === "||") {
+                C = pair(logical_composition_first_component(command),
+                      pair(make_branch_instruction(
+                             make_literal(true),
+                             logical_composition_second_component(command)),
+                        C));
+            } else {
+                error(logical_operator, "unknown logical operator");
+            }                                        // Question 2 End
         } else if (is_block(command)) {
             const locals = scan_out_declarations(
                              block_body(command));
@@ -393,8 +410,8 @@ function return_expression(component) {
 }
 
 // logical statements Question 2 add-ons
-function is_logical_statement(component) {
-    return is_tagged_list(component, "logical_statement");
+function is_logical_composition(component) {
+    return is_tagged_list(component, "logical_composition");
 }
 
 function logical_symbol(component) {
@@ -412,11 +429,6 @@ function logical_composition_second_component(component) {
 // helper to make conditional expression Q2
 function make_conditional_expression(pred, cons, alt) {
     return list("conditional", pred, cons, alt);
-}
-
-// helper to make literal values Q2
-function make_literal(value) {
-    return list("literal", value);
 }
 
 //
