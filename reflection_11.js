@@ -90,14 +90,23 @@ const is_binary_operator_combination = comp => is_tagged_list(comp, "binary_oper
 //     return head(S); 
 // }
 
+/*
 // Adding booleans, conditionals, and sequences
-// We don't evaluate consequent or alternative before predicate
+We don't evaluate consequent or alternative before predicate
 
 // Adding blocks and declarations
-// Just look at L11 Slides and launch the program... its crazy long
+Just look at L11 Slides and launch the program... its crazy long
 
-
-
+// Adding simple compound functions
+The function parameters, body and environment is a data structure pushed 
+into the stash. Translates it into a constant declaration.
+// Function Application
+Evaluate function expression and the arguments
+What happens when we encounter a call instruction in our control?
+function, argument expressions are already in the stash.
+We keep track the number of arguments because we need to pull the right values
+from the stash. 
+*/
 
 
 
