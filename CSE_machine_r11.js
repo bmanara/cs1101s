@@ -62,6 +62,7 @@ function evaluate(program) {
                              logical_composition_second_component(command),
                              make_literal(false)), 
                         C));
+                        // you can use make_conditional_expression by the way you dumbass
             } else if (logical_operator === "||") {
                 C = pair(logical_composition_first_component(command),
                       pair(make_branch_instruction(
