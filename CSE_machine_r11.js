@@ -622,7 +622,7 @@ const primitive_functions = list(
        list("display", display          ),
        list("error",   error            ),
        list("math_pow",math_pow         ),
-       list("parse",   parse            )
+       list("parse",   parse            )  //  Question 3
        );
 const primitive_function_symbols =
     map(head, primitive_functions);
