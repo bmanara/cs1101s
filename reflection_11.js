@@ -136,6 +136,16 @@ with the return instruction again.
 Once we hit marker in the control, we stop this return loop, and return the 
 value in the stash.
 
+// Evaluation of while loop
+Made into a conditional statement, with the predicate, sequence of the 
+while loop and sequence null.
+// Evaluation of for loop
+Re-intepret it as a while loop... from there, how might it look like?
+But... there are limitations... Such an approximation will fail at certain edge cases.
+This is because each iteration of the body has its own "copy" of the loop control
+variable. But our first approximation does not do that.
+
+// Evaluation of array expressions
 */
 
 
