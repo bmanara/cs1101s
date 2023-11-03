@@ -109,6 +109,44 @@ from the stash.
 */
 
 
+// Metalinguistic Abstraction II
+/*
+In our first iteration of the CSE machine, we only allow the body of a function
+to be the return statement. Basically makes a simple lambda function.
+In our function call, the arguments is placed in stash and the call instruction
+has the arity, therefore knowing how many values it needs to take from the stash.
+There is a difference to when a primitive function is called or a simple
+function is called. Environment is also made, and it restores the environement.
+Evaluate the function body, so we make an make_env_instr to tell CSE to go back
+to the original env once function call is done, since our CSE "destructively"
+creates a new environment.
+
+// A small problem... return statements
+Functions that do not evaluate a return statement must return undefined.
+Evaluation of a return statement anywhere in the function body will return
+from the function with the result of evaluating the return expression.
+
+If no return statement, we make a return statement that returns undefined which
+is inserted into the end of the function body.
+
+A marker will be made and pushed to the control if it is a complex function.
+If we have a return instruction, our return value will be in the stash.
+If head of control is not a marker, remove the head of control and replace it 
+with the return instruction again.
+Once we hit marker in the control, we stop this return loop, and return the 
+value in the stash.
+
+*/
+
+
+
+
+
+
+
+
+
+
 
 
 
