@@ -957,21 +957,24 @@ function sort_sequence(xs) { // Question 1
 
 function parse_and_evaluate(string) {
     const parsed_list = parse(string);
-    set_head(tail(parsed_list), sort_sequence(head(tail(parsed_list)))); // Question 1 
+    display_list(parsed_list);
+    if (head(parsed_list) === "sequence") {
+        set_head(tail(parsed_list), sort_sequence(head(tail(parsed_list)))); // Question 1 
+    }
     return evaluate(parsed_list);
 }
 
 // Question 1
-parse_and_evaluate(`
-const x = f(8);
-function f(y) {
-    return y + 34;
-}
-x;
-`);
+// parse_and_evaluate(`
+// const x = f(8);
+// function f(y) {
+//     return y + 34;
+// }
+// x;
+// `);
 
 // Question 2
-// parse_and_evaluate(`false ? abracadabra(simsalabim) : 42;`);
+parse_and_evaluate(`false ? abracadabra(simsalabim) : 42;`);
 
 
 
