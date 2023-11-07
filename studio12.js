@@ -16,7 +16,6 @@ Examples at the end of the program
 */
 
 function evaluate(program) { 
-    display(scan_out_declarations(program));
     let C = list(make_block(program));
     let S = null;
     let E = the_global_environment;
@@ -217,9 +216,6 @@ function evaluate(program) {
                        args, 
                        function_environment(fun));
             } else { // it's a complex function
-                display("------------------");
-                display(function_body(fun));
-                display("------------------");
                 C = pair(function_body(fun),   // pinned line
                       pair(make_marker(),
                         pair(make_env_instruction(E),
@@ -955,16 +951,17 @@ function sort_sequence(xs) { // Question 1
 }
 
 
-function parse_and_evaluate(string) {
-    const parsed_list = parse(string);
-    display_list(parsed_list);
-    if (head(parsed_list) === "sequence") {
-        set_head(tail(parsed_list), sort_sequence(head(tail(parsed_list)))); // Question 1 
-    }
-    return evaluate(parsed_list);
-}
+// function parse_and_evaluate(string) {
+//     // return evaluate(parse(string));
+//     const parsed_list = parse(string);
+//     display_list(parsed_list);
+//     if (head(parsed_list) === "sequence") {
+//         set_head(tail(parsed_list), sort_sequence(head(tail(parsed_list)))); // Question 1 
+//     }
+//     return evaluate(parsed_list);
+// }
 
-// Question 1
+// // Question 1
 // parse_and_evaluate(`
 // const x = f(8);
 // function f(y) {
