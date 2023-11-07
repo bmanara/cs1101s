@@ -274,6 +274,8 @@ function list_of_unassigned(symbols) {
     return map(symbol => "*unassigned*", symbols);
 }
 
+
+
 function apply_binary(operator, op1, op2) {
     return operator === "+"
            ? op1 + op2
@@ -951,17 +953,17 @@ function sort_sequence(xs) { // Question 1
 }
 
 
-// function parse_and_evaluate(string) {
-//     // return evaluate(parse(string));
-//     const parsed_list = parse(string);
-//     display_list(parsed_list);
-//     if (head(parsed_list) === "sequence") {
-//         set_head(tail(parsed_list), sort_sequence(head(tail(parsed_list)))); // Question 1 
-//     }
-//     return evaluate(parsed_list);
-// }
+function parse_and_evaluate(string) {
+    // return evaluate(parse(string));
+    const parsed_list = parse(string);
+    // display_list(parsed_list);
+    if (head(parsed_list) === "sequence") {
+        set_head(tail(parsed_list), sort_sequence(head(tail(parsed_list)))); // Question 1 
+    }
+    return evaluate(parsed_list);
+}
 
-// // Question 1
+// Question 1
 // parse_and_evaluate(`
 // const x = f(8);
 // function f(y) {
@@ -971,7 +973,16 @@ function sort_sequence(xs) { // Question 1
 // `);
 
 // Question 2
-parse_and_evaluate(`false ? abracadabra(simsalabim) : 42;`);
+// parse_and_evaluate(`false ? abracadabra(simsalabim) : 42;`);
+
+
+// Studion In-Class Question
+parse_and_evaluate(`
+const x = y;
+const y = 42;
+const z = "***" + x + "***";
+z;
+`);
 
 
 
