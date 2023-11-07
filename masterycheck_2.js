@@ -45,7 +45,8 @@ function fib(n) {
 In the above iteration, we have implemented a more efficient function
 with runtime, Θ(n) instead. BUT, everytime we call fib again, we reset our 
 mem to [0, 1]... Causing our program to evaluate each and every function call 
-again. We can fix this by...
+again. We can fix this by either storing mem outside of our function, 
+as a global variable, or...
 */
 
 function memoize(f) {
