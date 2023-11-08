@@ -9,16 +9,16 @@
 
 // Memoization
 /*
-Function records what was already caclulated, and stores it into a "local table"
+Function records what was already calculated, and stores it into a "local table"
 We represent this local table as an array. 
 Whenever the function is called, it checks to see whether it has evaluated 
-the same function callwith the same arguments. If it has, instead of 
+the same function call with the same arguments. If it has, instead of 
 re-evaluatiing it again, it will take the result from the array and return it.
 Having such an implementation can greatly reduce our runtime, especially if
 we are constantly calling the same function with the same arguments.
 */
 
-// Consider our fibonacci function, which used to have Θ(2^n), exponential runtime
+// Consider our Fibonacci function, which used to have Θ(2^n), exponential runtime
 
 function fib(n) {
     let mem = [0, 1];   // base values fin(0) = 0 and fib(1) = 1;
@@ -84,6 +84,7 @@ Any program that requires continuous function calls with the same arguments
 can use memoization, but this is assuming we expect our functions to always
 return the same result (functions behaviour only changes with different input).
 */
+
 
 // Streams
 /*
