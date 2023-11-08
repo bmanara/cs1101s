@@ -134,18 +134,17 @@ the stream.
 To further optimize this, we can use memoization.
 */
 
-// function stream_ref(s, n) {
-//     if (n === 0) {
-//         return head(s);
-//     } else {
-//         display(head(s));
-//         return stream_ref(stream_tail(s), n - 1);
-//     }
-// }
+function stream_map(f, s) {
+    display("running");
+    return is_null(s)
+           ? null 
+           : pair(f(head(s)),
+                  () => stream_map(f, stream_tail(s)));
+}
 
 const map_integer_stream = stream_map(x => x * 2, integer_stream);
-display(stream_ref(map_integer_stream, 6)); // 14
-display(stream_ref(map_integer_stream, 6)); // 14
+// display(stream_ref(map_integer_stream, 6)); // 14
+// display(stream_ref(map_integer_stream, 6)); // 14
 
 function memo(f) {
     let already_run = false;
@@ -165,6 +164,7 @@ function memo(f) {
 }
 
 function optimized_stream_map(f, s) {
+    display("running");
     return is_null(s)
            ? null
            : pair(f(head(s)), 
@@ -172,8 +172,8 @@ function optimized_stream_map(f, s) {
 }
 
 const map_integer_stream2 = optimized_stream_map(x => x * 2, integer_stream);
-display(stream_ref(map_integer_stream2, 6)); // 14
-display(stream_ref(map_integer_stream2, 6)); // 14
+// display(stream_ref(map_integer_stream2, 6)); // 14
+// display(stream_ref(map_integer_stream2, 6)); // 14
 
 
 
