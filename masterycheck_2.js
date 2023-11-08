@@ -71,9 +71,9 @@ const m_fib2 = memoize(n => n <= 0
                             ? 1 
                             : m_fib2(n - 1) + m_fib2(n - 2)); 
                             
-m_fib2(6); // 8
-m_fib2(7); // 13
-m_fib2(8); // 21
+// m_fib2(6); // 8
+// m_fib2(7); // 13
+// m_fib2(8); // 21
            
 /*                 
 Our function memoize essentially creates a new frame, with binding mem.
@@ -86,6 +86,36 @@ return the same result (functions behaviour only changes with different input).
 */
 
 // Streams
+// Delayed/"Lazy" Lists, that contains a data item as head, but a function 
+// as a tail
+
+// Finite Streams
+const s1 = null;
+const s2 = pair(1, () => null);
+const s3 = pair(1, () => pair(2, () => null));
+
+// Infinite Streams
+function from_n_integers(n) {
+    return pair(n, () => from_n_integers(n + 1));
+}
+
+const integer_stream = from_n_integers(1);
+display(stream_ref(integer_stream, 0)); // 1
+display(stream_ref(integer_stream, 5)); // 6
+
+const ones = pair(1, () => ones);  // stream of ones
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
