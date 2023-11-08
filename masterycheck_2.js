@@ -103,8 +103,8 @@ const s3 = pair(1, () => pair(2, () => null));
 
 function enum_stream(start, end) {
     return end < start
-           ? null 
-           ? pair(start, () => enum_stream(pair + 1, end));
+          ? null 
+          : pair(start, () => enum_stream(start + 1, end));
 }
 
 // Infinite Streams
@@ -113,8 +113,8 @@ function from_n_integers(n) {
 }
 
 const integer_stream = from_n_integers(1);
-display(stream_ref(integer_stream, 0)); // 1
-display(stream_ref(integer_stream, 5)); // 6
+// display(stream_ref(integer_stream, 0)); // 1
+// display(stream_ref(integer_stream, 5)); // 6
 
 const ones = pair(1, () => ones);  // stream of ones
 
@@ -125,17 +125,55 @@ is lazy, stream_member and stream_ref is sort-of lazy, and stream_reverse and
 stream_to_list is not lazy at all.
 
 The above implementation suffices for streams to work the way we intended it to.
-But, if we were to continuously call stream_ref(integer_stream, 6), our program 
+Lets assume we want to stream_map(x => x * 2, integer_stream);
+If we were to continuously call stream_ref(map_integer_stream, 6), our program 
 will always need to start from the 1st element of the stream, and force its way
 to the 6th element before returning to me the data item at index 5. 
+This means that it always calls x => x * 2 to every element when going through
+the stream.
 To further optimize this, we can use memoization.
 */
 
+// function stream_ref(s, n) {
+//     if (n === 0) {
+//         return head(s);
+//     } else {
+//         display(head(s));
+//         return stream_ref(stream_tail(s), n - 1);
+//     }
+// }
 
+const map_integer_stream = stream_map(x => x * 2, integer_stream);
+display(stream_ref(map_integer_stream, 6)); // 14
+display(stream_ref(map_integer_stream, 6)); // 14
 
+function memo(f) {
+    let already_run = false;
+    let result = undefined;
+    
+    function memoized() {
+        if (already_run) {
+            return result;
+        } else {
+            result = f();
+            already_run = true;
+            return result;
+        }   
+    }
+    
+    return memoized;
+}
 
+function optimized_stream_map(f, s) {
+    return is_null(s)
+           ? null
+           : pair(f(head(s)), 
+                  memo(() => optimized_stream_map(f, stream_tail(s)))); 
+}
 
-
+const map_integer_stream2 = optimized_stream_map(x => x * 2, integer_stream);
+display(stream_ref(map_integer_stream2, 6)); // 14
+display(stream_ref(map_integer_stream2, 6)); // 14
 
 
 
