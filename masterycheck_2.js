@@ -118,6 +118,19 @@ display(stream_ref(integer_stream, 5)); // 6
 
 const ones = pair(1, () => ones);  // stream of ones
 
+/*
+Not all functions in the Source 3 Documentation that supports stream processing etc,
+are lazy. It depends on what we expect the function to do. stream_map and stream_filter
+is lazy, stream_member and stream_ref is sort-of lazy, and stream_reverse and 
+stream_to_list is not lazy at all.
+
+The above implementation suffices for streams to work the way we intended it to.
+But, if we were to continuously call stream_ref(integer_stream, 6), our program 
+will always need to start from the 1st element of the stream, and force its way
+to the 6th element before returning to me the data item at index 5. 
+To further optimize this, we can use memoization.
+*/
+
 
 
 
