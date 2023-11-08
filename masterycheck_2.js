@@ -86,13 +86,26 @@ return the same result (functions behaviour only changes with different input).
 */
 
 // Streams
-// Delayed/"Lazy" Lists, that contains a data item as head, but a function 
-// as a tail
+/*
+Delayed/"Lazy" Lists, that contains a data item as head, but a function 
+as a tail
+The evaluation of the tail is delayed as it is a nullary lambda function.
+We only call the nullary function if we need the next element, therefore making
+it "lazy".
+In order to access the next data item, we need to call the tail of the stream,
+this is what stream_tail does.
+*/
 
 // Finite Streams
 const s1 = null;
 const s2 = pair(1, () => null);
 const s3 = pair(1, () => pair(2, () => null));
+
+function enum_stream(start, end) {
+    return end < start
+           ? null 
+           ? pair(start, () => enum_stream(pair + 1, end));
+}
 
 // Infinite Streams
 function from_n_integers(n) {
