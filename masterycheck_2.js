@@ -123,6 +123,7 @@ Not all functions in the Source 3 Documentation that supports stream processing 
 are lazy. It depends on what we expect the function to do. stream_map and stream_filter
 is lazy, stream_member and stream_ref is sort-of lazy, and stream_reverse and 
 stream_to_list is not lazy at all.
+Some functions will also fail when given an infinite stream, such as stream_length.
 
 The above implementation suffices for streams to work the way we intended it to.
 Lets assume we want to stream_map(x => x * 2, integer_stream);
@@ -175,7 +176,16 @@ const map_integer_stream2 = optimized_stream_map(x => x * 2, integer_stream);
 // display(stream_ref(map_integer_stream2, 6)); // 14
 // display(stream_ref(map_integer_stream2, 6)); // 14
 
-
+/*
+Though such an implementation seems to be extremely optimized, we do sacrifice
+a little bit of space used. Also, we don't always want to memoize everything. 
+What if our function running, we want the "side effects" to occur? Memoization
+will only allow the "side effects" to run the first time, the function is run, 
+afterwards, instead of running the function, it just returns the expected result. 
+This is great only if we are using pure functional programming, 
+    - without "side effects" 
+    - functions always return the same result when given the same arguments
+*/
 
 
 
