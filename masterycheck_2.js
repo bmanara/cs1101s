@@ -144,7 +144,7 @@ function stream_map(f, s) {
                   () => stream_map(f, stream_tail(s)));
 }
 
-const map_integer_stream = stream_map(x => x * 2, integer_stream);
+// const map_integer_stream = stream_map(x => x * 2, integer_stream);
 // display(stream_ref(map_integer_stream, 6)); // 14
 // display(stream_ref(map_integer_stream, 6)); // 14
 
@@ -173,7 +173,7 @@ function optimized_stream_map(f, s) {
                   memo(() => optimized_stream_map(f, stream_tail(s)))); 
 }
 
-const map_integer_stream2 = optimized_stream_map(x => x * 2, integer_stream);
+// const map_integer_stream2 = optimized_stream_map(x => x * 2, integer_stream);
 // display(stream_ref(map_integer_stream2, 6)); // 14
 // display(stream_ref(map_integer_stream2, 6)); // 14
 
