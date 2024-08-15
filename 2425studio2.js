@@ -32,3 +32,7 @@ function square(x) {
 // square(21);
 // square(4 + 3);
 // square(square(3));
+
+function sum_of_squares(x, y) {
+    return square(x) + square(y);
+}
