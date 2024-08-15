@@ -10,4 +10,13 @@
 27 / 6 * 10;
 */
 
-// 
+// Naming and the Environment
+/*
+const pi = 3.14;
+const radius = 10;
+
+const circumference = 2 * pi * radius;
+circumference;
+*/
+
+
