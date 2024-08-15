@@ -12,6 +12,7 @@
 
 // Naming and the Environment
 /*
+// Constant Declarations
 const pi = 3.14;
 const radius = 10;
 
@@ -19,4 +20,15 @@ const circumference = 2 * pi * radius;
 circumference;
 */
 
+// Compound Functions
 
+// Function Declaration 
+/*
+function square(x) {
+    return x * x;
+}
+*/
+
+// square(21);
+// square(4 + 3);
+// square(square(3));
