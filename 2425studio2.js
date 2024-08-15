@@ -68,3 +68,19 @@ function greater_or_equal(x, y) {
 // greater_or_equal(5, 4);
 // greater_or_equal(6, 6);
 // greater_or_equal(2, 6);
+
+/* Modulo Operator */
+// 5 % 2;
+// 6 % 2;
+// 30 % 7;
+// 40 % 7;
+
+/* Pre-declared Functions */
+// math_floor(5 / 2);
+// math_floor(6 / 2);
+// math_floor(30 / 7);
+
+// math_ceil(30 / 7);
+// math_max(2, 4);
+// math_max(3, 5, 6);
+
