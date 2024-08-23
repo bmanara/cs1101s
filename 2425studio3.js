@@ -57,3 +57,13 @@ function fib_iter(a, b, count) {
 // fib(10);
 
 // Orders of Growth
+
+import { stack, beside, circle, blank, square,
+         show, ribbon } from "rune";
+
+function moony_1(rune) {
+    return stack(beside(circle, blank),
+                 beside(square, rune));
+}
+
+show(moony_1(ribbon));
