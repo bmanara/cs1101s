@@ -58,6 +58,7 @@ function fib_iter(a, b, count) {
 
 // Orders of Growth
 
+/*
 import { stack, beside, circle, blank, square,
          show, ribbon } from "rune";
 
@@ -67,3 +68,4 @@ function moony_1(rune) {
 }
 
 show(moony_1(ribbon));
+*/
