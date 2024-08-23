@@ -1,6 +1,6 @@
 // Function Application
 
-/*
+
 const cost_per_meter = 199.95;
 
 function circumference(radius) {
@@ -11,12 +11,11 @@ function cost_of_circular_handrail(r) {
     return cost_per_meter * circumference(r);
 }
 
-cost_of_circular_handrail(2.1);
-*/
+// cost_of_circular_handrail(2.1);
+
 
 // Substitution Model
 
-/*
 function square(x) {
     return x * x;
 }
@@ -29,8 +28,32 @@ function f(a) {
     return sum_of_squares(a + 1, 2 * a);
 }
 
-f(5); 
-*/
+// f(5); 
 
 
 // Recursion
+
+// Recursive Process
+function fib_recur(n) {
+    return n <= 1
+           ? n
+           : fib_recur(n - 1) + fib_recur(n - 2);
+}
+
+// fib_recur(10);
+
+// Iterative Process
+function fib(n) {
+    return fib_iter(1, 0, n);
+}
+
+function fib_iter(a, b, count) {
+    return count <= 0
+           ? b
+           : fib_iter(a + b, a, count - 1);
+}
+
+
+// fib(10);
+
+// Orders of Growth
