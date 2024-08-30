@@ -72,4 +72,4 @@ const thrice_r = f => repeated(f, 3);
 
 thrice_r(thrice_r)(x => x + 1)(0);
 
-((thrice(thrice))(square))(2);
+((thrice(thrice))(square))(2); // explore further
