@@ -50,3 +50,15 @@ adder(3)(5);
 
 // Scoping
 // Use above examples to illustrate!
+
+// Studio In-Class
+function compose(f, g) {
+    return x => f(g(x));
+}
+
+function thrice(f) {
+    return compose(compose(f, f), f);
+}
+
+thrice(math_sqrt)(256);
+
