@@ -62,3 +62,14 @@ function thrice(f) {
 
 thrice(math_sqrt)(256);
 
+function repeated(f, n) {
+    return n === 0
+        ? x => x
+        : compose(f, repeated(f, n - 1));
+}
+
+const thrice_r = f => repeated(f, 3);
+
+thrice_r(thrice_r)(x => x + 1)(0);
+
+((thrice(thrice))(square))(2);
