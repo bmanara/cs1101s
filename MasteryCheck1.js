@@ -24,3 +24,11 @@ g2(f()); // function
 g2(f())(5); // 25
 
 f1(x => 1 + 2); // does it perform any addition?
+
+function factorial(i) {
+    return i <= 0
+        ? 1
+        : i * factorial(i - 1);
+}
+
+factorial(10);
