@@ -49,3 +49,21 @@ makeup_amount(22, list(1, 10, 5, 20, 1, 5, 1, 50));
 // Result: list(list(20, 1, 1), list(10, 5, 1, 5, 1), list(1, 20, 1),
 //              list(1, 20, 1), list(1, 10, 5, 5, 1), 
 //              list(1, 10, 5, 1, 5))
+
+// Studio S6 In-Class
+// Q1
+function remove_duplicates(lst) {
+    return accumulate(
+        (x, xs) =>
+            is_null(member(x, xs))
+                ? pair(x, xs)
+                : xs,
+        null,
+        lst);
+}
+
+remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
+// Result: list(4, 3, 1, 2)
+
+remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
+// Result: list("a", "x", "c", "b", "d")
