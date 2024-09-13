@@ -67,3 +67,25 @@ remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
 
 remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
 // Result: list("a", "x", "c", "b", "d")
+
+// Q2
+function subsets(xs) {
+    if (is_null(xs)) {
+        return list(null);
+    } else {
+        const subsets_rest = subsets(tail(xs));
+        const x = head(xs);
+        const has_x = map(s =>pair(x, s), subsets_rest);
+        return append(subsets_rest, has_x);
+    }
+}
+
+// SOLUTION 2:
+function subsets_2(xs) {
+    return accumulate(
+        (x, ss) => append(ss, map(s => pair(x, s), ss)),
+        list(null),
+        xs);
+}
+
+subsets(list(1, 2, 3, 4));
