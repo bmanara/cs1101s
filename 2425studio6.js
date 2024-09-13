@@ -89,3 +89,15 @@ function subsets_2(xs) {
 }
 
 subsets(list(1, 2, 3, 4));
+
+// Q3
+function permutations(s) {
+    return is_null(s)
+        ? list(null)
+        : accumulate(append, null,
+            map(x => map(p => pair(x, p),
+                         permutations(remove(x, s))),
+                s));
+}
+
+permutations(list(1, 2, 3, 4));
