@@ -14,3 +14,12 @@ function my_map(f, xs) {
 my_map(math_sqrt, list(1, 2, 3, 4, 5)); 
 
 // Q2
+function remove_duplicates(lst) {
+    return is_null(lst)
+        ? null
+        : pair(head(lst),
+            remove_duplicates(
+	            filter(x => !equal(x, head(lst)), tail(lst))));
+}
+
+remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
