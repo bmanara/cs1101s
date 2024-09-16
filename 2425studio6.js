@@ -69,6 +69,7 @@ remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
 // Result: list("a", "x", "c", "b", "d")
 
 // Q2
+// SOLUTION 1:
 function subsets(xs) {
     if (is_null(xs)) {
         return list(null);
