@@ -1,3 +1,63 @@
+// Streams
+
+const s1 = null; // empty stream
+
+const s2 = pair(1, () => null); // stream with element 1
+
+const s3 = pair(1, 
+                () => pair(2, 
+                           () => pair(3, null))); // stream with element 1, 2, 3
+                           
+// Infinite Streams
+
+function ones_stream() {
+    return pair(1, ones_stream);
+}
+
+// Finite Stream
+function enum_stream(low, hi) {
+    return low > hi
+        ? null
+        : pair(low, () => enum_stream(low + 1, hi));
+}
+
+const ones = ones_stream(); // stream with 1s
+const s_enum = enum_stream(1, 100); // stream from 1 to 100
+
+// Convenient Functions to have
+function stream_tail(stream) {
+    return tail(stream)(); // takes the tail, calls the function at tail
+}
+
+function stream_ref(s, n) {
+    return n === 0 
+        ? head(s)
+        : stream_ref(stream_tail(s), n - 1);
+}
+
+function stream_map(f, s) {
+    return is_null(s)
+        ? null
+        : pair(f(head(s)),
+               () => stream_map(f, stream_tail(s)));
+}
+
+function stream_filter(p, s) {
+    return is_null(s)
+        ? null
+        : p(head(s)) // predicate
+            ? pair(head(s), // if true, add head to stream
+                   () => stream_filter(p, stream_tail(s)))
+            : stream_filter(p, stream_tail(s)); // keep going until we get a true
+}
+
+
+
+head(stream_tail(ones));
+head(stream_tail(s3));
+
+
+/*
 // Symbolic Processing
 // Example given in Lecture
 
@@ -91,3 +151,4 @@ const exp3 = make_product(make_product("x", "y"),
 display_list(deriv_symbolic(exp1, "x"));
 display_list(deriv_symbolic(exp2, "x"));
 display_list(deriv_symbolic(exp3, "x"));
+*/
