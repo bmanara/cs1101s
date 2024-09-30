@@ -1,5 +1,5 @@
 // Streams
-/*
+
 const s1 = null; // empty stream
 
 const s2 = pair(1, () => null); // stream with element 1
@@ -55,7 +55,7 @@ function stream_filter(p, s) {
 
 head(stream_tail(ones));
 head(stream_tail(s3));
-*/
+
 
 // Midterm Questions
 (f => f(f))
