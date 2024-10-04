@@ -38,3 +38,15 @@ function fn_make_account(initial_balance) {
 // const W2 = W1(40);
 // const W3 = W2(40);
 // const W4 = W3(40);
+
+// Showing independence of accounts
+const W5 = make_account(100);
+const W6 = make_account(100);
+
+// W5 and W6 are completely independent from each other
+// Each has its own state variable balance
+// Therefore, withdrawals do not affect one another
+W5(50);
+W6(80);
+W5(80);
+W6(20);
