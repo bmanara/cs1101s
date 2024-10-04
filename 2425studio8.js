@@ -50,3 +50,20 @@ W5(50);
 W6(80);
 W5(80);
 W6(20);
+
+
+// Mutable Data Exercises
+const a = list(1, 3, 5);
+const b = list(2, 4);
+const c = append(a, b);
+
+set_head(a, 20);
+
+c;
+
+// Arrays
+const arr1 = [10, 20, 30, 40]; // array of length 4
+let arr2 = []; // empty array
+
+arr1[0]; // 10
+arr1[1]; // 20
