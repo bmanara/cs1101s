@@ -67,3 +67,36 @@ let arr2 = []; // empty array
 
 arr1[0]; // 10
 arr1[1]; // 20
+arr1[3] = 50;
+
+array_length(arr1); // 4
+
+// while loop
+function factorial_w(n) {
+    let acc = 1;
+    let k = 1;
+    while (k <= n) {
+        acc = acc * k;
+        k = k + 1;
+    }
+    return acc;
+}
+
+// for loop
+function factorial_f(n) {
+    let acc = 1;
+    for (let k = 1; k <= n; k = k + 1) {
+        acc = acc * k;
+    }
+    return acc;
+}
+
+// break
+for (let i = 1; i < 5; i = i + 1) {
+    display(stringify(i) + " here");
+    if (i === 2) {
+        break;
+    }
+    display(stringify(i) + " there");
+}
+display("OK");
