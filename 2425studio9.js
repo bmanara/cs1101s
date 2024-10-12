@@ -76,23 +76,40 @@
 
 // Returns a 2D array that represents 
 //   a rows x cols zero matrix.
-function zero_matrix(rows, cols) {
-    const M = [];
-    let r = 0;
-    while (r < rows) {
-        M[r] = [];
-        let c = 0;
-        while (c < cols) {
-            M[r][c] = 0;
-            c = c + 1;
-        }
-        r = r + 1;
+// function zero_matrix(rows, cols) {
+//     const M = [];
+//     let r = 0;
+//     while (r < rows) {
+//         M[r] = [];
+//         let c = 0;
+//         while (c < cols) {
+//             M[r][c] = 0;
+//             c = c + 1;
+//         }
+//         r = r + 1;
+//     }
+//     return M;
+// }
+
+// const mat3x4 = zero_matrix(3, 4);
+// mat3x4;
+
+// Studio S9
+function d_filter(pred, xs) {
+    if (is_null(xs)) {
+        return xs;
+    } else if (pred(head(xs))) {
+        set_tail(xs, d_filter(pred, tail(xs)));
+        return xs;
+    } else {
+        return d_filter(pred, tail(xs));
     }
-    return M;
 }
 
-const mat3x4 = zero_matrix(3, 4);
-mat3x4;
+const L = list(1, 2, 3, 4);
+const L1 = d_filter(x => x % 2 === 0, L);
+L1;
+L;
 
 
 
