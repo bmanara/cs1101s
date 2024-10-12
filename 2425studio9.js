@@ -99,6 +99,11 @@
 let x = 0;
 (x = x + 1) * x; // we evaluate left to right (right to left would give a different answer)
 
+// Control keeps track of what to run/program to run
+1 + 2; // first example
+
+
+
 
 // Studio S9
 
