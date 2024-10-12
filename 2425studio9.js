@@ -137,8 +137,13 @@
 // const y = false;
 // x || y;
 
-// Conditional Statements
-// Similar to how conditional expression is done. Also value producing
+// // Conditional Statements
+// // Similar to how conditional expression is done. Also value producing
+
+// // Assignments
+// let x = 0;
+// x = x + 1; // does not pop the result out of stash
+
 
 
 // // Studio S9
