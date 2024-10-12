@@ -100,7 +100,12 @@ let x = 0;
 (x = x + 1) * x; // we evaluate left to right (right to left would give a different answer)
 
 // Control keeps track of what to run/program to run
-1 + 2; // first example
+// Control deconstructs the expression into its components
+// splits it up into 2 * 3 and 4 * 5 in control
+// splits 2 * 3 up, puts 2 and 3 onto stack. Multiply. Result of multiply goes to stash.
+// splits 4 * 5 up, puts 4 and 5 onto stack. Multiply. Result of multiply goes to stash.
+// add with values in stack. Result go to stash
+2 * 3 + 4 * 5; // first example
 
 
 
