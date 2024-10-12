@@ -95,7 +95,7 @@
 // mat3x4;
 
 // Studio S9
-function d_filter(pred, xs) {
+function d_filter(pred, xs) { 
     if (is_null(xs)) {
         return xs;
     } else if (pred(head(xs))) {
