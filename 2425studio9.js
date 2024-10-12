@@ -106,9 +106,9 @@ function d_filter(pred, xs) {
     }
 }
 
-const L = list(1, 2, 3, 4);
-const L1 = d_filter(x => x % 2 === 0, L);
-L1;
+const L = list(1, 2);
+d_filter(x => x % 2 === 0, L);
+// L1; omit this first, assign L1 later.
 L;
 
 
