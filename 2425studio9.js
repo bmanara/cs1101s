@@ -75,7 +75,8 @@
 // a === b;
 
 // Returns a 2D array that represents 
-//   a rows x cols zero matrix.
+//   a rows x cols zero matrix
+
 // function zero_matrix(rows, cols) {
 //     const M = [];
 //     let r = 0;
@@ -94,22 +95,28 @@
 // const mat3x4 = zero_matrix(3, 4);
 // mat3x4;
 
-// Studio S9
-function d_filter(pred, xs) { 
-    if (is_null(xs)) {
-        return xs;
-    } else if (pred(head(xs))) {
-        set_tail(xs, d_filter(pred, tail(xs)));
-        return xs;
-    } else {
-        return d_filter(pred, tail(xs));
-    }
-}
+// CSE Machine
+let x = 0;
+(x = x + 1) * x; // we evaluate left to right (right to left would give a different answer)
 
-const L = list(1, 2);
-d_filter(x => x % 2 === 0, L);
-// L1; omit this first, assign L1 later.
-L;
+
+// Studio S9
+
+// function d_filter(pred, xs) { 
+//     if (is_null(xs)) {
+//         return xs;
+//     } else if (pred(head(xs))) {
+//         set_tail(xs, d_filter(pred, tail(xs)));
+//         return xs;
+//     } else {
+//         return d_filter(pred, tail(xs));
+//     }
+// }
+
+// const L = list(1, 2);
+// d_filter(x => x % 2 === 0, L);
+// // L1; omit this first, assign L1 later.
+// L;
 
 
 
