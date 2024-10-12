@@ -126,12 +126,19 @@
 // // const x = 4; // add this at the end to show the value producing...
 // // display(x);
 
-// Conditional Expression
-const x = true; // asgn x is put into the control, and then pop cause... (not value producing)
-x ? 1 + 2 : 3 * 4; 
-// decomposed, predicate is placed into the control, along with branch instruction
-// true gets placed into the stash, branch inst checks for this value in the stash
+// // Conditional Expression
+// const x = true; // asgn x is put into the control, and then pop cause... (not value producing)
+// x ? 1 + 2 : 3 * 4; // value producing!
+// // decomposed, predicate is placed into the control, along with branch instruction
+// // true gets placed into the stash, branch inst checks for this value in the stash
 
+// //  Logical Compositions
+// const x = true;
+// const y = false;
+// x || y;
+
+// Conditional Statements
+// Similar to how conditional expression is done. Also value producing
 
 
 // // Studio S9
