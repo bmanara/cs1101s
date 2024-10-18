@@ -1,3 +1,22 @@
+// Env Model Exercise
+function f1() {
+    return () => 10;
+}
+
+function f2(x, y) {
+    return () => 10;
+}
+
+function f3(x, y) {
+    const z = 10;
+    return () => 10;
+}
+
+f1();
+f2(1, 2);
+f3(1, 3);
+
+
 // // Operator Combinations
 // 2 * 3 + 4 * 5;
 
@@ -26,13 +45,13 @@
 //     22;
 // }
 
-// Functions: Returning from everywhere
-function f(n, b) {
-    if (b) {
-        return n * n;
-    }
-    const k = 4;
-    return k * n;
-}
+// // Functions: Returning from everywhere
+// function f(n, b) {
+//     if (b) {
+//         return n * n;
+//     }
+//     const k = 4;
+//     return k * n;
+// }
 
-f(4, true) + 5;
+// f(4, true) + 5;
