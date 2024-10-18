@@ -18,10 +18,11 @@
 // const f = x => x + 1;
 // f(3);
 
-// Conditionals
-let x = 1;
-if (x > 2) {
-    11;
-} else {
-    22;
-}
+// // Conditionals
+// let x = 1;
+// if (x > 2) {
+//     11;
+// } else {
+//     22;
+// }
+
