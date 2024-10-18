@@ -26,3 +26,13 @@
 //     22;
 // }
 
+// Functions: Returning from everywhere
+function f(n, b) {
+    if (b) {
+        return n * n;
+    }
+    const k = 4;
+    return k * n;
+}
+
+f(4, true) + 5;
