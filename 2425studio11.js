@@ -1,3 +1,4 @@
+// Memoized Streams
 function memo_fun(fun) {
     let already_run = false;
     let result = undefined;
@@ -24,5 +25,5 @@ const ones = pair(1, () => ones);
 const onesA = pair(1, () => ms("A", onesA));
 stream_ref(onesA, 3);
 
-const onesB = pair(1, memo_fun(() => ms("B", onesB)));
-stream_ref(onesB, 3);
+// const onesB = pair(1, memo_fun(() => ms("B", onesB)));
+// stream_ref(onesB, 3);
