@@ -40,9 +40,28 @@ function m_integers_from(n) {
 
 const m_integers = m_integers_from(1);
 
-stream_ref(m_integers, 0);
-stream_ref(m_integers, 1);
-stream_ref(m_integers, 2);
-stream_ref(m_integers, 2);
+// stream_ref(m_integers, 0);
+// stream_ref(m_integers, 1);
+// stream_ref(m_integers, 2);
+// stream_ref(m_integers, 2);
 // stream_ref(m_integers, 5);
 // stream_ref(m_integers, 5);
+
+
+// Estimating Square Root using Newton's Method
+function average(a, b) {
+    return (a + b) / 2;
+}
+
+function improve(guess, x) {
+    return average(guess, x / guess);
+}
+
+function sqrt_stream(x) {
+    const guesses = pair(1.0, 
+        () => stream_map(guess => improve(guess, x), 
+                         guesses));
+    return guesses;
+}
+
+eval_stream(sqrt_stream(2), 6);
