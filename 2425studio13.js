@@ -40,3 +40,11 @@ function rpn(n: number,
 }
 
 rpn(3, square, 2);
+
+// Any type and Union type
+const a = 1;
+const b: any = 1;
+
+const c: (number | string) = 1;
+const d: (number | string) = "one";
+const e: (number | string) = x => x; // error thrown
