@@ -70,4 +70,19 @@ let y : number = 1;
 const A : number[] = [1, 2, 3];
 const s : Stream<number> = integers_from(1);
 
+// For loops
+function factorial(n: number): number {
+    let acc : number = 1;
+    for (let i : number = 1; i <= n; i = i + 1) {
+        acc = acc * i;
+    }
+    return acc;
+}
+
+factorial(6);
+
+// Array Processing
+A[0] = 3;
+A[1] = "A"; // error thrown
+
 
