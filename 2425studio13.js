@@ -1,7 +1,6 @@
 // Types
 
 // Source S1 Types
-
 // Type annotations
 const x: number = 1;
 
@@ -48,3 +47,5 @@ const b: any = 1;
 const c: (number | string) = 1;
 const d: (number | string) = "one";
 const e: (number | string) = x => x; // error thrown
+
+
