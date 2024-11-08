@@ -46,6 +46,28 @@ const b: any = 1;
 
 const c: (number | string) = 1;
 const d: (number | string) = "one";
-const e: (number | string) = x => x; // error thrown
+// const e: (number | string) = x => x; // error thrown
+
+// Source S2 Typed
+// Type Annotations
+const p: Pair<number, number> = pair(1, 2);
+const l: List<number> = list(1, 2, 3, 4);
+
+
+function map_number(f: (number) => number,
+                    xs: List<number>): List<number> {
+    return is_null(xs) 
+        ? null
+        : pair(f(head(xs)), map_number(f, tail(xs)));
+}
+
+map_number(x => x * 2, l);
+
+
+// Source S3 Typed
+// Type Annotations
+let y : number = 1;
+const A : number[] = [1, 2, 3];
+const s : Stream<number> = integers_from(1);
 
 
